@@ -29,36 +29,29 @@
 </head>
 <body class="min-h-screen flex flex-col text-slate-800 antialiased">
 
-    <!-- CINTILLA INSTITUCIONAL SUPERIOR CON IMÁGENES -->
-    <div class="text-white border-b-2 border-dorado-500 py-3 px-4 sm:px-8 shadow-sm" style="background-color: #7A1C3A;">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-            
-            <!-- Bloque de Imágenes Institucionales -->
+    <!-- CINTILLA INSTITUCIONAL SUPERIOR -->
+    <div class="bg-[#5A0020] text-white border-b-2 border-dorado-500 py-2 px-4 sm:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
             <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 md:gap-6">
-                
-                <!-- 1. Logo Gobierno de México (Reemplaza 'gobierno-mexico.png' por el nombre de tu archivo de imagen) -->
-                <div class="flex items-center">
-                    <img src="gobierno-mexico.png" alt="Gobierno de México" class="h-12 w-auto object-contain">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-landmark text-amber-300 text-lg sm:text-xl"></i>
+                    <div class="leading-tight">
+                        <span class="block text-xs sm:text-sm font-bold tracking-tight">Gobierno de</span>
+                        <span class="block text-sm sm:text-base font-extrabold tracking-tight">México</span>
+                    </div>
                 </div>
-
-                <div class="hidden sm:block h-8 w-px bg-dorado-500/60"></div>
-
-                <!-- 2. Logo Ciencia y Tecnología (Reemplaza 'ciencia-tecnologia.png' por el nombre de tu archivo) -->
-                <div class="flex items-center">
-                    <img src="ciencia-tecnologia.png" alt="Ciencia y Tecnología" class="h-10 w-auto object-contain">
+                <div class="hidden sm:block h-7 w-px bg-dorado-500/60"></div>
+                <div class="leading-tight">
+                    <span class="block text-sm sm:text-base font-bold tracking-wide">Ciencia y Tecnología</span>
+                    <span class="block text-[10px] text-slate-200 font-light">Secretaría de Ciencia, Humanidades, Tecnología e Innovación</span>
                 </div>
-
-                <div class="hidden sm:block h-8 w-px bg-dorado-500/60"></div>
-
-                <!-- 3. Logo UNRC (Reemplaza 'logo-unrc.png' por el nombre de tu archivo) -->
-                <div class="flex items-center">
-                    <img src="logo-unrc.png" alt="UNRC" class="h-10 w-auto object-contain">
+                <div class="hidden sm:block h-7 w-px bg-dorado-500/60"></div>
+                <div class="leading-tight">
+                    <span class="block text-base sm:text-lg font-black tracking-wider text-amber-200">UNRC</span>
+                    <span class="block text-[9px] text-slate-200 uppercase tracking-tighter">Universidad Nacional Rosario Castellanos</span>
                 </div>
-
             </div>
-
-            <!-- Identificador de la plataforma -->
-            <div class="hidden lg:flex items-center space-x-2 bg-black/20 px-3 py-1.5 rounded-md border border-dorado-500/40 text-xs text-amber-100 font-medium">
+            <div class="hidden lg:flex items-center space-x-2 bg-vino-900/80 px-3 py-1 rounded-md border border-dorado-500/40 text-xs text-amber-100">
                 <i class="fas fa-graduation-cap text-amber-300"></i>
                 <span>Plataforma Oficial de Microaprendizaje</span>
             </div>
@@ -114,9 +107,9 @@
     <!-- CONTENIDO PRINCIPAL -->
     <main class="flex-grow">
         
-        <!-- SECCIÓN 1: INICIO / HERO (VINO SUAVE) -->
+        <!-- SECCIÓN 1: INICIO / HERO -->
         <section id="sec-inicio" class="seccion-pagina">
-            <div class="text-white py-16 px-4 sm:px-6 lg:px-8 shadow-inner border-b-4 border-dorado-500" style="background: linear-gradient(135deg, #7A1C3A 0%, #63122E 100%);">
+            <div class="gradient-hero text-white py-16 px-4 sm:px-6 lg:px-8 shadow-inner border-b-4 border-dorado-500">
                 <div class="max-w-4xl mx-auto text-center space-y-6">
                     <span class="inline-block bg-vino-950/80 text-amber-200 text-xs font-semibold uppercase tracking-wider px-3.5 py-1 rounded-full border border-dorado-500/50">
                         Universidad Nacional Rosario Castellanos
@@ -156,6 +149,11 @@
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 group-hover:text-vino-800 transition">🖥️ Programación</h3>
                         <p class="text-sm text-slate-500 mt-2">Fundamentos de lógica, estructuras de datos, paradigmas y desarrollo web.</p>
+                        <ul class="mt-4 space-y-1.5 text-xs text-slate-600 font-medium">
+                            <li class="flex items-center"><i class="fas fa-check text-vino-700 mr-2"></i> Lógica de Programación</li>
+                            <li class="flex items-center"><i class="fas fa-check text-vino-700 mr-2"></i> Arreglos y Estructuras</li>
+                            <li class="flex items-center"><i class="fas fa-check text-vino-700 mr-2"></i> Desarrollo Web y BD</li>
+                        </ul>
                     </div>
 
                     <div onclick="filtrarPorArea('Matemáticas')" class="bg-white rounded-2xl shadow-xl p-6 border-t-4 border-vino-800 hover:-translate-y-1 transition duration-300 cursor-pointer group">
@@ -164,6 +162,11 @@
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 group-hover:text-vino-800 transition">📐 Matemáticas</h3>
                         <p class="text-sm text-slate-500 mt-2">Álgebra, cálculo, probabilidad y matemáticas discretas aplicadas a TIC.</p>
+                        <ul class="mt-4 space-y-1.5 text-xs text-slate-600 font-medium">
+                            <li class="flex items-center"><i class="fas fa-check text-vino-700 mr-2"></i> Álgebra y Lógica</li>
+                            <li class="flex items-center"><i class="fas fa-check text-vino-700 mr-2"></i> Cálculo y Funciones</li>
+                            <li class="flex items-center"><i class="fas fa-check text-vino-700 mr-2"></i> Matemáticas Discretas</li>
+                        </ul>
                     </div>
 
                     <div onclick="filtrarPorArea('Ciencias Sociales')" class="bg-white rounded-2xl shadow-xl p-6 border-t-4 border-vino-800 hover:-translate-y-1 transition duration-300 cursor-pointer group">
@@ -172,12 +175,17 @@
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 group-hover:text-vino-800 transition">🌍 Ciencias Sociales</h3>
                         <p class="text-sm text-slate-500 mt-2">Normativa APA 7ma, redacción técnica y el impacto social de la tecnología.</p>
+                        <ul class="mt-4 space-y-1.5 text-xs text-slate-600 font-medium">
+                            <li class="flex items-center"><i class="fas fa-check text-vino-700 mr-2"></i> Normas APA 7ma Ed.</li>
+                            <li class="flex items-center"><i class="fas fa-check text-vino-700 mr-2"></i> Redacción y Ortografía</li>
+                            <li class="flex items-center"><i class="fas fa-check text-vino-700 mr-2"></i> Impacto y Tendencias TIC</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN 2: CATÁLOGO -->
+        <!-- SECCIÓN 2: CATÁLOGO DE CÁPSULAS -->
         <section id="sec-catalogo" class="seccion-pagina hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
                 <div>
@@ -203,7 +211,7 @@
             <div id="gridCapsulas" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
         </section>
 
-        <!-- SECCIÓN 3: DETALLE -->
+        <!-- SECCIÓN 3: DETALLE DE CÁPSULA INTERNA -->
         <section id="sec-capsula" class="seccion-pagina hidden max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
             <button onclick="navegarA('catalogo')" class="mb-6 inline-flex items-center text-xs font-semibold text-vino-800 hover:text-vino-950 bg-vino-50 px-3 py-1.5 rounded-md border border-vino-200 transition">
                 <i class="fas fa-arrow-left mr-2"></i> Volver al Catálogo
@@ -211,7 +219,7 @@
             <div id="detalleCapsulaContenido" class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200"></div>
         </section>
 
-        <!-- SECCIÓN 4: ACERCA -->
+        <!-- SECCIÓN 4: ACERCA DEL PROYECTO -->
         <section id="sec-acerca" class="seccion-pagina hidden max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="bg-white rounded-2xl shadow-xl p-8 border border-slate-200 space-y-6">
                 <div class="border-b border-slate-200 pb-4">
@@ -219,17 +227,73 @@
                     <h2 class="text-3xl font-extrabold text-slate-900 mt-1">Acerca del Proyecto</h2>
                 </div>
                 <p class="text-slate-700 leading-relaxed">
-                    El proyecto <strong>UMA-TIC</strong> es una iniciativa de la Licenciatura en Tecnologías de la Información y la Comunicación de la <strong>Universidad Nacional Rosario Castellanos (UNRC)</strong>.
+                    El proyecto <strong>UMA-TIC</strong> es una iniciativa de la Licenciatura en Tecnologías de la Información y la Comunicación de la <strong>Universidad Nacional Rosario Castellanos (UNRC)</strong>. Diseñado por estudiantes de 7.º semestre como parte de su formación profesional bajo la metodología de Aprendizaje Basado en Proyectos (ABP).
                 </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
+                    <div class="p-4 bg-vino-50 rounded-xl border border-vino-100">
+                        <h4 class="font-bold text-vino-900 mb-1">🎯 Objetivo</h4>
+                        <p class="text-xs text-slate-600">Reforzar competencias clave en asignaturas de alta complejidad en los primeros semestres.</p>
+                    </div>
+                    <div class="p-4 bg-vino-50 rounded-xl border border-vino-100">
+                        <h4 class="font-bold text-vino-900 mb-1">⚡ Metodología</h4>
+                        <p class="text-xs text-slate-600">Microaprendizaje estructurado con contenidos sintéticos, recursos visuales e interactivos.</p>
+                    </div>
+                    <div class="p-4 bg-vino-50 rounded-xl border border-vino-100">
+                        <h4 class="font-bold text-vino-900 mb-1">👥 Comunidad</h4>
+                        <p class="text-xs text-slate-600">Validado por las academias docentes y desarrollado por alumnos para sus pares.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
     </main>
 
-    <!-- FOOTER -->
+    <!-- PIE DE PÁGINA (FOOTER) -->
     <footer class="bg-vino-950 text-white border-t-2 border-dorado-500 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center text-xs text-vino-200/60">
-            &copy; UMA-TIC - Universidad Nacional Rosario Castellanos | Gobierno de México. Todos los derechos reservados. MFM
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+                <div>
+                    <h5 class="font-bold text-base text-amber-200 mb-3 flex items-center">
+                        <span class="bg-white text-vino-900 text-xs px-2 py-0.5 rounded font-extrabold mr-2">UNRC</span>
+                        Información Institucional
+                    </h5>
+                    <p class="text-vino-100/80 text-xs leading-relaxed">
+                        Licenciatura en Tecnologías de la Información y la Comunicación.<br>
+                        Universidad Nacional Rosario Castellanos.<br>
+                        Secretaría de Ciencia, Humanidades, Tecnología e Innovación.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="font-bold text-base text-amber-200 mb-3">Métricas del Portal</h5>
+                    <ul class="text-vino-100/80 text-xs space-y-1.5">
+                        <li class="flex justify-between border-b border-vino-900 pb-1">
+                            <span>Visitas al sitio:</span>
+                            <span class="font-bold text-white">2,845</span>
+                        </li>
+                        <li class="flex justify-between border-b border-vino-900 pb-1">
+                            <span>Cápsulas completadas:</span>
+                            <span class="font-bold text-white">1,120</span>
+                        </li>
+                        <li class="flex justify-between border-b border-vino-900 pb-1">
+                            <span>Satisfacción de usuarios:</span>
+                            <span class="font-bold text-amber-300">98% ★★★★★</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold text-base text-amber-200 mb-3">Créditos & Contacto</h5>
+                    <p class="text-vino-100/80 text-xs leading-relaxed mb-3">
+                        Proyecto de Innovación Educativa bajo la metodología ABP.<br>
+                        Validado por las Academias de Programación, Matemáticas y Ciencias Sociales.
+                    </p>
+                    <a href="https://www.rcastellanos.cdmx.gob.mx/" target="_blank" class="inline-block text-xs text-amber-200 hover:text-white underline">
+                        Sitio Oficial UNRC <i class="fas fa-external-link-alt text-[10px] ml-1"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-vino-900 mt-8 pt-6 text-center text-xs text-vino-200/60">
+                &copy; UMA-TIC - Universidad Nacional Rosario Castellanos | Gobierno de México. Todos los derechos reservados.MFM
+            </div>
         </div>
     </footer>
 
