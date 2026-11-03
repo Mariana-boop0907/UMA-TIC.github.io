@@ -24,25 +24,44 @@ function toggleMenuMobil() {
 function filtrarPorArea(area) {
     navegarA('catalogo');
     document.getElementById('filtroAreaSelect').value = area;
+    document.getElementById('filtroFormatoSelect').value = 'Todos';
+    // Limpiar campos de búsqueda al filtrar por categoría para evitar confusiones
+    const inputCentral = document.getElementById('busquedaCentral');
+    const inputHeader = document.getElementById('busquedaHeader');
+    if(inputCentral) inputCentral.value = '';
+    if(inputHeader) inputHeader.value = '';
     filtrarCapsulas();
 }
 
 function filtrarCapsulas() {
     const area = document.getElementById('filtroAreaSelect').value;
     const formato = document.getElementById('filtroFormatoSelect').value;
+    
+    // Capturar texto de búsqueda desde el input central o del header
+    const textoCentral = document.getElementById('busquedaCentral') ? document.getElementById('busquedaCentral').value.toLowerCase().trim() : '';
+    const textoHeader = document.getElementById('busquedaHeader') ? document.getElementById('busquedaHeader').value.toLowerCase().trim() : '';
+    const query = textoCentral || textoHeader;
+
     const grid = document.getElementById('gridCapsulas');
 
     const filtradas = listaCapsulas.filter(cap => {
         const cumpleArea = (area === 'Todas' || cap.area === area);
         const cumpleFormato = (formato === 'Todos' || cap.formato === formato);
-        return cumpleArea && cumpleFormato;
+        
+        // Coincidencia por texto en título, explicación o etiquetas (tags)
+        const coincideTexto = !query || 
+            cap.titulo.toLowerCase().includes(query) || 
+            cap.explicacion.toLowerCase().includes(query) || 
+            (cap.tags && cap.tags.some(tag => tag.toLowerCase().includes(query)));
+
+        return cumpleArea && cumpleFormato && coincideTexto;
     });
 
     grid.innerHTML = '';
     if(filtradas.length === 0) {
         grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-500">
             <i class="fas fa-folder-open text-4xl mb-3 text-slate-300"></i>
-            <p>No se encontraron cápsulas para los filtros seleccionados.</p>
+            <p>No se encontraron cápsulas que coincidan con tu búsqueda.</p>
         </div>`;
         return;
     }
@@ -132,24 +151,34 @@ function evaluarRespuesta(esCorrecta) {
 }
 
 function ejecutarBusquedaCentral() {
-    const query = document.getElementById('busquedaCentral').value.trim();
-    if(query) {
-        navegarA('catalogo');
-    }
+    // Al buscar, restablecemos los selects de filtro a "Todas/Todos" para que la búsqueda libre funcione sin restricciones
+    const selectArea = document.getElementById('filtroAreaSelect');
+    const selectFormato = document.getElementById('filtroFormatoSelect');
+    if(selectArea) selectArea.value = 'Todas';
+    if(selectFormato) selectFormato.value = 'Todos';
+
+    navegarA('catalogo');
 }
 
 function buscarHero(e) {
-    if(e.key === 'Enter') ejecutarBusquedaCentral();
+    if(e.key === 'Enter') {
+        ejecutarBusquedaCentral();
+    }
 }
 
 function buscarHeader(e) {
     if(e.key === 'Enter') {
-        navegarA('catalogo');
+        // Sincronizar el valor del header con el input central si existe
+        const val = document.getElementById('busquedaHeader').value;
+        const central = document.getElementById('busquedaCentral');
+        if(central) central.value = val;
+        ejecutarBusquedaCentral();
     }
 }
 
 function buscarEtiqueta(tag) {
-    document.getElementById('busquedaCentral').value = tag;
+    const central = document.getElementById('busquedaCentral');
+    if(central) central.value = tag;
     ejecutarBusquedaCentral();
 }
 
