@@ -1,0 +1,597 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UMA-TIC | Unidades de Microaprendizaje TIC - UNRC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        // Configuración de la paleta personalizada de Tailwind (Vino Quemado Institucional)
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        vino: {
+                            50: '#fdf2f4',
+                            100: '#fbe5e9',
+                            200: '#f7ced7',
+                            300: '#f0a8b8',
+                            400: '#e47690',
+                            500: '#d34a6a',
+                            600: '#b72c4e',
+                            700: '#8f1c39',
+                            800: '#5A0020', /* Vino quemado institucional exacto */
+                            900: '#430018',
+                            950: '#2a000e',
+                        },
+                        dorado: {
+                            400: '#e5c158',
+                            500: '#BC955C', /* Dorado institucional complementario */
+                            600: '#9d783e'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .gradient-hero {
+            background: linear-gradient(135deg, #5A0020 0%, #3d0015 100%);
+        }
+        .smooth-transition {
+            transition: all 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col text-slate-800 antialiased">
+
+    <!-- CINTILLA INSTITUCIONAL SUPERIOR -->
+    <div class="bg-[#5A0020] text-white border-b-2 border-dorado-500 py-2 px-4 sm:px-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
+            <!-- Bloque Izquierdo: Gobierno de México + Ciencia y Tecnología + UNRC -->
+            <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 md:gap-6">
+                <!-- Escudo / Gobierno de México -->
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-[#e5c158] fa-landmark text-amber-300 text-lg sm:text-xl"></i>
+                    <div class="leading-tight">
+                        <span class="block text-xs sm:text-sm font-bold tracking-tight">Gobierno de</span>
+                        <span class="block text-sm sm:text-base font-extrabold tracking-tight">México</span>
+                    </div>
+                </div>
+
+                <div class="hidden sm:block h-7 w-px bg-dorado-500/60"></div>
+
+                <!-- Secretaría de Ciencia y Tecnología -->
+                <div class="leading-tight">
+                    <span class="block text-sm sm:text-base font-bold tracking-wide">Ciencia y Tecnología</span>
+                    <span class="block text-[10px] text-slate-200 font-light">Secretaría de Ciencia, Humanidades, Tecnología e Innovación</span>
+                </div>
+
+                <div class="hidden sm:block h-7 w-px bg-dorado-500/60"></div>
+
+                <!-- Siglas UNRC -->
+                <div class="leading-tight">
+                    <span class="block text-base sm:text-lg font-black tracking-wider text-amber-200">UNRC</span>
+                    <span class="block text-[9px] text-slate-200 uppercase tracking-tighter">Universidad Nacional Rosario Castellanos</span>
+                </div>
+            </div>
+
+            <!-- Identificador de la plataforma -->
+            <div class="hidden lg:flex items-center space-x-2 bg-vino-900/80 px-3 py-1 rounded-md border border-dorado-500/40 text-xs text-amber-100">
+                <i class="fas fa-graduation-cap text-amber-300"></i>
+                <span>Plataforma Oficial de Microaprendizaje</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ENCABEZADO (HEADER) -->
+    <header class="bg-vino-900 text-white sticky top-0 z-50 shadow-lg border-b border-vino-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo e Identidad UMA-TIC -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="navegarA('inicio')">
+                    <div class="bg-white text-vino-800 font-extrabold p-2 rounded-lg shadow flex items-center justify-center w-10 h-10 border-2 border-amber-300">
+                        <span class="text-lg tracking-tighter">TIC</span>
+                    </div>
+                    <div>
+                        <span class="text-lg font-bold tracking-tight block text-white">UMA-TIC</span>
+                        <span class="text-[10px] text-amber-200/90 block -mt-1 font-medium">Unidades de Microaprendizaje</span>
+                    </div>
+                </div>
+
+                <!-- Navegación Escritorio -->
+                <nav class="hidden md:flex space-x-1 lg:space-x-3 items-center">
+                    <button onclick="navegarA('inicio')" class="px-3 py-1.5 rounded-md text-sm font-medium text-white hover:bg-vino-800 transition">Inicio</button>
+                    <button onclick="filtrarPorArea('Programación')" class="px-3 py-1.5 rounded-md text-sm font-medium text-vino-100 hover:bg-vino-800 transition">Programación</button>
+                    <button onclick="filtrarPorArea('Matemáticas')" class="px-3 py-1.5 rounded-md text-sm font-medium text-vino-100 hover:bg-vino-800 transition">Matemáticas</button>
+                    <button onclick="filtrarPorArea('Ciencias Sociales')" class="px-3 py-1.5 rounded-md text-sm font-medium text-vino-100 hover:bg-vino-800 transition">Ciencias Sociales</button>
+                    <button onclick="navegarA('acerca')" class="px-3 py-1.5 rounded-md text-sm font-medium text-vino-100 hover:bg-vino-800 transition">Acerca del Proyecto</button>
+                </nav>
+
+                <!-- Buscador Rápido -->
+                <div class="hidden lg:flex items-center space-x-2">
+                    <div class="relative">
+                        <input type="text" id="busquedaHeader" onkeypress="buscarHeader(event)" placeholder="Buscar cápsula..." class="bg-vino-950/80 text-white placeholder-vino-300 text-sm rounded-full pl-9 pr-4 py-1.5 focus:outline-none focus:ring-2 focus:ring-dorado-500 w-44 transition-all focus:w-56 border border-vino-700">
+                        <i class="fas fa-search absolute left-3 top-2.5 text-vino-300 text-xs"></i>
+                    </div>
+                </div>
+
+                <!-- Botón Menú Móvil -->
+                <div class="md:hidden flex items-center">
+                    <button id="btnMobileMenu" onclick="toggleMenuMobil()" class="text-white hover:text-amber-200 focus:outline-none p-1">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobileMenu" class="hidden md:hidden bg-vino-950 border-t border-vino-800 px-4 pt-2 pb-4 space-y-2">
+            <button onclick="navegarA('inicio'); toggleMenuMobil()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-white hover:bg-vino-800">Inicio</button>
+            <button onclick="filtrarPorArea('Programación'); toggleMenuMobil()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-vino-200 hover:bg-vino-800">Programación</button>
+            <button onclick="filtrarPorArea('Matemáticas'); toggleMenuMobil()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-vino-200 hover:bg-vino-800">Matemáticas</button>
+            <button onclick="filtrarPorArea('Ciencias Sociales'); toggleMenuMobil()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-vino-200 hover:bg-vino-800">Ciencias Sociales</button>
+            <button onclick="navegarA('acerca'); toggleMenuMobil()" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-vino-200 hover:bg-vino-800">Acerca del Proyecto</button>
+        </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="flex-grow">
+        
+        <!-- SECCIÓN 1: INICIO / HERO -->
+        <section id="sec-inicio" class="seccion-pagina">
+            <!-- Hero Banner con Vino Quemado -->
+            <div class="gradient-hero text-white py-16 px-4 sm:px-6 lg:px-8 shadow-inner border-b-4 border-dorado-500">
+                <div class="max-w-4xl mx-auto text-center space-y-6">
+                    <span class="inline-block bg-vino-950/80 text-amber-200 text-xs font-semibold uppercase tracking-wider px-3.5 py-1 rounded-full border border-dorado-500/50">
+                        Universidad Nacional Rosario Castellanos
+                    </span>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+                        Aprende a tu ritmo con cápsulas dinámicas de microaprendizaje
+                    </h1>
+                    <p class="text-lg sm:text-xl text-vino-100 max-w-2xl mx-auto font-light leading-relaxed">
+                        Espacio educativo desarrollado por estudiantes de 7.º semestre de la Licenciatura en Tecnologías de la Información y la Comunicación para fortalecer tu desempeño académico.
+                    </p>
+
+                    <!-- Buscador Central -->
+                    <div class="pt-4 max-w-xl mx-auto">
+                        <div class="relative flex items-center">
+                            <input type="text" id="busquedaCentral" onkeypress="buscarHero(event)" placeholder="¿Qué tema quieres repasar hoy? (Ej. APA 7, C++, Cálculo)..." class="w-full text-slate-800 pl-12 pr-28 py-4 rounded-xl shadow-lg focus:outline-none focus:ring-4 focus:ring-dorado-500 text-sm sm:text-base">
+                            <i class="fas fa-search absolute left-4 text-slate-400 text-lg"></i>
+                            <button onclick="ejecutarBusquedaCentral()" class="absolute right-2 bg-vino-800 hover:bg-vino-900 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition shadow border border-dorado-500/40">
+                                Buscar
+                            </button>
+                        </div>
+                        <!-- Etiquetas de Búsqueda Rápida -->
+                        <div class="flex flex-wrap justify-center gap-2 mt-3 text-xs text-amber-100">
+                            <span>Sugerencias:</span>
+                            <button onclick="buscarEtiqueta('APA 7')" class="underline hover:text-amber-300">APA 7</button>
+                            <span>•</span>
+                            <button onclick="buscarEtiqueta('Estructuras de Datos')" class="underline hover:text-amber-300">Estructuras de Datos</button>
+                            <span>•</span>
+                            <button onclick="buscarEtiqueta('Cálculo')" class="underline hover:text-amber-300">Cálculo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accesos Rápidos por Área -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 pb-16">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Tarjeta Programación -->
+                    <div onclick="filtrarPorArea('Programación')" class="bg-white rounded-2xl shadow-xl p-6 border-t-4 border-vino-800 hover:-translate-y-1 transition duration-300 cursor-pointer group">
+                        <div class="w-14 h-14 bg-vino-50 text-vino-800 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:bg-vino-800 group-hover:text-white transition border border-vino-200">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 group-hover:text-vino-800 transition">🖥️ Programación</h3>
+                        <p class="text-sm text-slate-500 mt-2">Fundamentos de lógica, estructuras de datos, paradigmas y desarrollo web.</p>
+                        <ul class="mt-4 space-y-1.5 text-xs text-slate-600 font-medium">
+                            <li class="flex items-center"><i class="fas fa-check text-vino-700 mr-2"></i> Lógica de Programación</li>
+                            <li class="flex items-center"><i class="fas fa-check text-vino-700 mr-2"></i> Arreglos y Estructuras</li>
+                            <li class="flex items-center"><i class="fas fa-check text-vino-700 mr-2"></i> Desarrollo Web y BD</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tarjeta Matemáticas -->
+                    <div onclick="filtrarPorArea('Matemáticas')" class="bg-white rounded-2xl shadow-xl p-6 border-t-4 border-vino-800 hover:-translate-y-1 transition duration-300 cursor-pointer group">
+                        <div class="w-14 h-14 bg-vino-50 text-vino-800 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:bg-vino-800 group-hover:text-white transition border border-vino-200">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 group-hover:text-vino-800 transition">📐 Matemáticas</h3>
+                        <p class="text-sm text-slate-500 mt-2">Álgebra, cálculo, probabilidad y matemáticas discretas aplicadas a TIC.</p>
+                        <ul class="mt-4 space-y-1.5 text-xs text-slate-600 font-medium">
+                            <li class="flex items-center"><i class="fas fa-check text-vino-700 mr-2"></i> Álgebra y Lógica</li>
+                            <li class="flex items-center"><i class="fas fa-check text-vino-700 mr-2"></i> Cálculo y Funciones</li>
+                            <li class="flex items-center"><i class="fas fa-check text-vino-700 mr-2"></i> Matemáticas Discretas</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tarjeta Ciencias Sociales -->
+                    <div onclick="filtrarPorArea('Ciencias Sociales')" class="bg-white rounded-2xl shadow-xl p-6 border-t-4 border-vino-800 hover:-translate-y-1 transition duration-300 cursor-pointer group">
+                        <div class="w-14 h-14 bg-vino-50 text-vino-800 rounded-xl flex items-center justify-center text-2xl mb-4 group-hover:bg-vino-800 group-hover:text-white transition border border-vino-200">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 group-hover:text-vino-800 transition">🌍 Ciencias Sociales</h3>
+                        <p class="text-sm text-slate-500 mt-2">Normativa APA 7ma, redacción técnica y el impacto social de la tecnología.</p>
+                        <ul class="mt-4 space-y-1.5 text-xs text-slate-600 font-medium">
+                            <li class="flex items-center"><i class="fas fa-check text-vino-700 mr-2"></i> Normas APA 7ma Ed.</li>
+                            <li class="flex items-center"><i class="fas fa-check text-vino-700 mr-2"></i> Redacción y Ortografía</li>
+                            <li class="flex items-center"><i class="fas fa-check text-vino-700 mr-2"></i> Impacto y Tendencias TIC</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: CATÁLOGO DE CÁPSULAS -->
+        <section id="sec-catalogo" class="seccion-pagina max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Catálogo de Cápsulas de Aprendizaje</h2>
+                    <p class="text-sm text-slate-600">Explora la colección de microrecursos interactivos desarrollados para la comunidad UNRC.</p>
+                </div>
+                <!-- Filtros -->
+                <div class="flex flex-wrap items-center gap-3">
+                    <select id="filtroAreaSelect" onchange="filtrarCapsulas()" class="bg-white border border-slate-300 text-slate-700 text-sm rounded-lg px-3 py-2 focus:ring-2 focus:ring-vino-800 focus:outline-none">
+                        <option value="Todas">Todas las áreas</option>
+                        <option value="Programación">Programación</option>
+                        <option value="Matemáticas">Matemáticas</option>
+                        <option value="Ciencias Sociales">Ciencias Sociales</option>
+                    </select>
+                    <select id="filtroFormatoSelect" onchange="filtrarCapsulas()" class="bg-white border border-slate-300 text-slate-700 text-sm rounded-lg px-3 py-2 focus:ring-2 focus:ring-vino-800 focus:outline-none">
+                        <option value="Todos">Todos los formatos</option>
+                        <option value="Infografía">Infografía</option>
+                        <option value="Video">Video</option>
+                        <option value="Quiz">Quiz Interactivo</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Grid de Tarjetas -->
+            <div id="gridCapsulas" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Se llena mediante JS -->
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: DETALLE DE CÁPSULA INTERNA -->
+        <section id="sec-capsula" class="seccion-pagina hidden max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <button onclick="navegarA('catalogo')" class="mb-6 inline-flex items-center text-xs font-semibold text-vino-800 hover:text-vino-950 bg-vino-50 px-3 py-1.5 rounded-md border border-vino-200 transition">
+                <i class="fas fa-arrow-left mr-2"></i> Volver al Catálogo
+            </button>
+            
+            <div id="detalleCapsulaContenido" class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+                <!-- Contenido detallado de la cápsula mediante JavaScript -->
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: ACERCA DEL PROYECTO -->
+        <section id="sec-acerca" class="seccion-pagina hidden max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="bg-white rounded-2xl shadow-xl p-8 border border-slate-200 space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="text-xs font-bold text-vino-800 uppercase tracking-widest">Proyecto Institucional UMA-TIC</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-1">Acerca del Proyecto</h2>
+                </div>
+                <p class="text-slate-700 leading-relaxed">
+                    El proyecto **UMA-TIC** es una iniciativa de la Licenciatura en Tecnologías de la Información y la Comunicación de la **Universidad Nacional Rosario Castellanos (UNRC)**. Diseñado por estudiantes de 7.º semestre como parte de su formación profesional bajo la metodología de Aprendizaje Basado en Proyectos (ABP).
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
+                    <div class="p-4 bg-vino-50 rounded-xl border border-vino-100">
+                        <h4 class="font-bold text-vino-900 mb-1">🎯 Objetivo</h4>
+                        <p class="text-xs text-slate-600">Reforzar competencias clave en asignaturas de alta complejidad en los primeros semestres.</p>
+                    </div>
+                    <div class="p-4 bg-vino-50 rounded-xl border border-vino-100">
+                        <h4 class="font-bold text-vino-900 mb-1">⚡ Metodología</h4>
+                        <p class="text-xs text-slate-600">Microaprendizaje estructurado con contenidos sintéticos, recursos visuales e interactivos.</p>
+                    </div>
+                    <div class="p-4 bg-vino-50 rounded-xl border border-vino-100">
+                        <h4 class="font-bold text-vino-900 mb-1">👥 Comunidad</h4>
+                        <p class="text-xs text-slate-600">Validado por las academias docentes y desarrollado por alumnos para sus pares.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA (FOOTER) -->
+    <footer class="bg-vino-950 text-white border-t-2 border-dorado-500 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+                
+                <!-- Columna 1: Información Institucional -->
+                <div>
+                    <h5 class="font-bold text-base text-amber-200 mb-3 flex items-center">
+                        <span class="bg-white text-vino-900 text-xs px-2 py-0.5 rounded font-extrabold mr-2">UNRC</span>
+                        Información Institucional
+                    </h5>
+                    <p class="text-vino-100/80 text-xs leading-relaxed">
+                        Licenciatura en Tecnologías de la Información y la Comunicación.<br>
+                        Universidad Nacional Rosario Castellanos.<br>
+                        Secretaría de Ciencia, Humanidades, Tecnología e Innovación.
+                    </p>
+                </div>
+
+                <!-- Columna 2: Métricas / Indicadores -->
+                <div>
+                    <h5 class="font-bold text-base text-amber-200 mb-3">Métricas del Portal</h5>
+                    <ul class="text-vino-100/80 text-xs space-y-1.5">
+                        <li class="flex justify-between border-b border-vino-900 pb-1">
+                            <span>Visitas al sitio:</span>
+                            <span class="font-bold text-white">2,845</span>
+                        </li>
+                        <li class="flex justify-between border-b border-vino-900 pb-1">
+                            <span>Cápsulas completadas:</span>
+                            <span class="font-bold text-white">1,120</span>
+                        </li>
+                        <li class="flex justify-between border-b border-vino-900 pb-1">
+                            <span>Satisfacción de usuarios:</span>
+                            <span class="font-bold text-amber-300">98% ★★★★★</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Créditos -->
+                <div>
+                    <h5 class="font-bold text-base text-amber-200 mb-3">Créditos & Contacto</h5>
+                    <p class="text-vino-100/80 text-xs leading-relaxed mb-3">
+                        Proyecto de Innovación Educativa bajo la metodología ABP.<br>
+                        Validado por las Academias de Programación, Matemáticas y Ciencias Sociales.
+                    </p>
+                    <a href="https://www.rcastellanos.cdmx.gob.mx/" target="_blank" class="inline-block text-xs text-amber-200 hover:text-white underline">
+                        Sitio Oficial UNRC <i class="fas fa-external-link-alt text-[10px] ml-1"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="border-t border-vino-900 mt-8 pt-6 text-center text-xs text-vino-200/60">
+                &copy; UMA-TIC - Universidad Nacional Rosario Castellanos | Gobierno de México. Todos los derechos reservados.MFM
+            </div>
+        </div>
+    </footer>
+
+    <!-- LÓGICA E INTERACTIVIDAD JS -->
+    <script>
+        const listaCapsulas = [
+            {
+                id: 1,
+                titulo: "Citas y Referencias con Normas APA 7ma Edición",
+                area: "Ciencias Sociales",
+                duracion: "5 min",
+                nivel: "Inicial",
+                formato: "Infografía",
+                tags: ["APA 7", "Redacción", "Citas"],
+                explicacion: "Aprende a estructurar correctamente las citas textuales y parentéticas en tus trabajos académicos respetando los lineamientos de la 7.ª edición del manual APA.",
+                recursoHtml: `<div class="bg-vino-50 p-6 rounded-xl border-2 border-vino-200 text-center">
+                    <i class="fas fa-file-invoice text-5xl text-vino-800 mb-3"></i>
+                    <h4 class="font-bold text-slate-800 text-base mb-2">Infografía Interactiva: Estructura APA 7</h4>
+                    <p class="text-xs text-slate-600 max-w-md mx-auto mb-4">Muestra la anatomía de una cita entre paréntesis y una cita narrativa con ejemplos prácticos.</p>
+                    <div class="bg-white p-4 rounded-lg shadow-sm border border-vino-200 text-left text-xs space-y-2 max-w-lg mx-auto font-mono text-slate-700">
+                        <p><strong class="text-vino-800">Cita narrativa:</strong> Según Pérez (2023), "las TIC transforman el aprendizaje"...</p>
+                        <p><strong class="text-vino-800">Cita parentética:</strong> (Pérez, 2023, p. 45)</p>
+                    </div>
+                </div>`,
+                ejercicioPregunta: "¿Cuál es el formato correcto para una cita parentética de un autor en APA 7?",
+                opciones: ["(García, 2022)", "García (2022)", "García, 2022, pag 10", "[García - 2022]"],
+                respuestaCorrecta: 0
+            },
+            {
+                id: 2,
+                titulo: "Introducción a Arreglos Unidimensionales (Vectores) en C++",
+                area: "Programación",
+                duracion: "7 min",
+                nivel: "Intermedio",
+                formato: "Video",
+                tags: ["C++", "Estructuras de Datos", "Programación"],
+                explicacion: "Los arreglos permiten almacenar múltiples elementos del mismo tipo de forma contigua en memoria. Aprende su sintaxis, declaración e iteración básica con bucles for.",
+                recursoHtml: `<div class="bg-slate-900 text-slate-100 p-6 rounded-xl shadow-inner font-mono text-xs">
+                    <div class="flex items-center justify-between pb-3 border-b border-slate-700 mb-3 text-slate-400">
+                        <span>ejemplo_vector.cpp</span>
+                        <span>C++17</span>
+                    </div>
+                    <pre class="overflow-x-auto text-emerald-400"><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int numeros[5] = {10, 20, 30, 40, 50};
+    for(int i = 0; i &lt; 5; i++) {
+        cout &lt;&lt; "Posicion [" &lt;&lt; i &lt;&lt; "]: " &lt;&lt; numeros[i] &lt;&lt; endl;
+    }
+    return 0;
+}</code></pre>
+                </div>`,
+                ejercicioPregunta: "¿Cuál es el índice del primer elemento en un arreglo en C++?",
+                opciones: ["1", "-1", "0", "Depende del tamaño"],
+                respuestaCorrecta: 2
+            },
+            {
+                id: 3,
+                titulo: "Derivadas por Definición e Interpretación Geométrica",
+                area: "Matemáticas",
+                duracion: "8 min",
+                nivel: "Intermedio",
+                formato: "Quiz",
+                tags: ["Cálculo", "Funciones", "Matemáticas"],
+                explicacion: "Comprende el concepto de la derivada como la razón de cambio instantánea y la pendiente de la recta tangente a una curva en un punto determinado.",
+                recursoHtml: `<div class="bg-amber-50 p-6 rounded-xl border border-amber-200 text-center">
+                    <i class="fas fa-square-root-variable text-5xl text-amber-700 mb-3"></i>
+                    <h4 class="font-bold text-slate-800 text-base">Fórmula del Límite de Fermat</h4>
+                    <p class="font-serif text-lg font-bold text-vino-900 my-3">f'(x) = lim <sub>h → 0</sub> [f(x + h) - f(x)] / h</p>
+                </div>`,
+                ejercicioPregunta: "Geométricamente, ¿qué representa la derivada de una función en un punto?",
+                opciones: ["El área bajo la curva", "La pendiente de la recta tangente", "El valor máximo de la función", "El eje de simetría"],
+                respuestaCorrecta: 1
+            }
+        ];
+
+        function navegarA(idSeccion) {
+            document.querySelectorAll('.seccion-pagina').forEach(sec => sec.classList.add('hidden'));
+            
+            if(idSeccion === 'inicio') {
+                document.getElementById('sec-inicio').classList.remove('hidden');
+            } else if(idSeccion === 'catalogo') {
+                document.getElementById('sec-catalogo').classList.remove('hidden');
+                filtrarCapsulas();
+            } else if(idSeccion === 'capsula') {
+                document.getElementById('sec-capsula').classList.remove('hidden');
+            } else if(idSeccion === 'acerca') {
+                document.getElementById('sec-acerca').classList.remove('hidden');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMenuMobil() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function filtrarPorArea(area) {
+            navegarA('catalogo');
+            document.getElementById('filtroAreaSelect').value = area;
+            filtrarCapsulas();
+        }
+
+        function filtrarCapsulas() {
+            const area = document.getElementById('filtroAreaSelect').value;
+            const formato = document.getElementById('filtroFormatoSelect').value;
+            const grid = document.getElementById('gridCapsulas');
+
+            const filtradas = listaCapsulas.filter(cap => {
+                const cumpleArea = (area === 'Todas' || cap.area === area);
+                const cumpleFormato = (formato === 'Todos' || cap.formato === formato);
+                return cumpleArea && cumpleFormato;
+            });
+
+            grid.innerHTML = '';
+            if(filtradas.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-500">
+                    <i class="fas fa-folder-open text-4xl mb-3 text-slate-300"></i>
+                    <p>No se encontraron cápsulas para los filtros seleccionados.</p>
+                </div>`;
+                return;
+            }
+
+            filtradas.forEach(cap => {
+                grid.innerHTML += `
+                    <div class="bg-white rounded-2xl shadow-md border border-slate-200 hover:shadow-xl transition duration-300 flex flex-col overflow-hidden group">
+                        <div class="bg-vino-800 text-white p-4 flex justify-between items-center border-b border-dorado-500/40">
+                            <span class="text-xs font-semibold uppercase tracking-wider bg-vino-950 px-2.5 py-0.5 rounded text-amber-200">${cap.area}</span>
+                            <span class="text-xs text-vino-200"><i class="far fa-clock mr-1"></i>${cap.duracion}</span>
+                        </div>
+                        <div class="p-5 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-base group-hover:text-vino-800 transition mb-2">${cap.titulo}</h3>
+                                <p class="text-xs text-slate-600 line-clamp-3 leading-relaxed mb-4">${cap.explicacion}</p>
+                            </div>
+                            <div>
+                                <div class="flex items-center justify-between text-xs text-slate-500 border-t border-slate-100 pt-3 mb-4">
+                                    <span>Nivel: <strong class="text-slate-700">${cap.nivel}</strong></span>
+                                    <span>Formato: <strong class="text-vino-800">${cap.formato}</strong></span>
+                                </div>
+                                <button onclick="verDetalleCapsula(${cap.id})" class="w-full bg-vino-800 hover:bg-vino-900 text-white font-medium text-xs py-2.5 rounded-lg transition text-center shadow border border-dorado-500/30">
+                                    Ver Cápsula / Iniciar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function verDetalleCapsula(id) {
+            const cap = listaCapsulas.find(item => item.id === id);
+            if(!cap) return;
+
+            const contenedor = document.getElementById('detalleCapsulaContenido');
+            contenedor.innerHTML = `
+                <div class="bg-vino-900 text-white p-6 border-b-4 border-dorado-500">
+                    <span class="text-xs font-bold text-amber-300 uppercase tracking-wider">${cap.area}</span>
+                    <h2 class="text-2xl font-bold mt-1">${cap.titulo}</h2>
+                    <p class="text-xs text-vino-200 mt-2">Validado por la Academia UNRC | Nivel ${cap.nivel} • ${cap.duracion}</p>
+                </div>
+                <div class="p-6 sm:p-8 space-y-8">
+                    <!-- Step 1 -->
+                    <div class="space-y-2">
+                        <h3 class="text-base font-bold text-vino-900 flex items-center">
+                            <span class="bg-vino-800 text-white rounded-full w-6 h-6 inline-flex items-center justify-center text-xs mr-2">1</span>
+                            Explicación Breve
+                        </h3>
+                        <p class="text-sm text-slate-700 leading-relaxed pl-8">${cap.explicacion}</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="space-y-2">
+                        <h3 class="text-base font-bold text-vino-900 flex items-center mb-3">
+                            <span class="bg-vino-800 text-white rounded-full w-6 h-6 inline-flex items-center justify-center text-xs mr-2">2</span>
+                            Recurso Multimedia / Interactivo
+                        </h3>
+                        <div class="pl-8">${cap.recursoHtml}</div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="space-y-3">
+                        <h3 class="text-base font-bold text-vino-900 flex items-center">
+                            <span class="bg-vino-800 text-white rounded-full w-6 h-6 inline-flex items-center justify-center text-xs mr-2">3</span>
+                            Ejercicio Práctico
+                        </h3>
+                        <div class="pl-8 bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                            <p class="text-xs font-bold text-slate-800">${cap.ejercicioPregunta}</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                                ${cap.opciones.map((opt, idx) => `
+                                    <button onclick="evaluarRespuesta(${idx === cap.respuestaCorrecta})" class="text-left p-2.5 rounded-lg border border-slate-300 bg-white hover:bg-vino-50 hover:border-vino-300 transition text-slate-700">
+                                        ${opt}
+                                    </button>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            navegarA('capsula');
+        }
+
+        function evaluarRespuesta(esCorrecta) {
+            if(esCorrecta) {
+                alert("¡Respuesta Correcta! Has completado el ejercicio con éxito.");
+            } else {
+                alert("Respuesta incorrecta. Revisa el contenido explicativo e inténtalo de nuevo.");
+            }
+        }
+
+        /* Buscadores */
+        function ejecutarBusquedaCentral() {
+            const query = document.getElementById('busquedaCentral').value.trim();
+            if(query) {
+                navegarA('catalogo');
+            }
+        }
+
+        function buscarHero(e) {
+            if(e.key === 'Enter') ejecutarBusquedaCentral();
+        }
+
+        function buscarHeader(e) {
+            if(e.key === 'Enter') {
+                navegarA('catalogo');
+            }
+        }
+
+        function buscarEtiqueta(tag) {
+            document.getElementById('busquedaCentral').value = tag;
+            ejecutarBusquedaCentral();
+        }
+
+        // Carga inicial
+        window.onload = function() {
+            filtrarCapsulas();
+        };
+    </script>
+</body>
