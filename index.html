@@ -29,34 +29,36 @@
 </head>
 <body class="min-h-screen flex flex-col text-slate-800 antialiased">
 
-    <!-- CINTILLA INSTITUCIONAL SUPERIOR (VINO MÁS CLARO) -->
+    <!-- CINTILLA INSTITUCIONAL SUPERIOR CON IMÁGENES -->
     <div class="text-white border-b-2 border-dorado-500 py-3 px-4 sm:px-8 shadow-sm" style="background-color: #7A1C3A;">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+            
+            <!-- Bloque de Imágenes Institucionales -->
             <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 md:gap-6">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-landmark text-amber-300 text-lg sm:text-xl"></i>
-                    <div class="leading-tight">
-                        <span class="block text-xs sm:text-sm font-bold tracking-tight text-amber-100">Gobierno de</span>
-                        <span class="block text-sm sm:text-base font-extrabold tracking-tight text-white">México</span>
-                    </div>
+                
+                <!-- 1. Logo Gobierno de México (Reemplaza 'gobierno-mexico.png' por el nombre de tu archivo de imagen) -->
+                <div class="flex items-center">
+                    <img src="gobierno-mexico.png" alt="Gobierno de México" class="h-12 w-auto object-contain">
                 </div>
 
-                <div class="hidden sm:block h-7 w-px bg-dorado-500/60"></div>
+                <div class="hidden sm:block h-8 w-px bg-dorado-500/60"></div>
 
-                <div class="leading-tight">
-                    <span class="block text-sm sm:text-base font-bold tracking-wide text-white">Ciencia y Tecnología</span>
-                    <span class="block text-[10px] text-amber-100 font-light">Secretaría de Ciencia, Humanidades, Tecnología e Innovación</span>
+                <!-- 2. Logo Ciencia y Tecnología (Reemplaza 'ciencia-tecnologia.png' por el nombre de tu archivo) -->
+                <div class="flex items-center">
+                    <img src="ciencia-tecnologia.png" alt="Ciencia y Tecnología" class="h-10 w-auto object-contain">
                 </div>
 
-                <div class="hidden sm:block h-7 w-px bg-dorado-500/60"></div>
+                <div class="hidden sm:block h-8 w-px bg-dorado-500/60"></div>
 
-                <div class="leading-tight">
-                    <span class="block text-base sm:text-lg font-black tracking-wider text-amber-200">UNRC</span>
-                    <span class="block text-[9px] text-amber-100 uppercase tracking-tighter">Universidad Nacional Rosario Castellanos</span>
+                <!-- 3. Logo UNRC (Reemplaza 'logo-unrc.png' por el nombre de tu archivo) -->
+                <div class="flex items-center">
+                    <img src="logo-unrc.png" alt="UNRC" class="h-10 w-auto object-contain">
                 </div>
+
             </div>
 
-            <div class="hidden lg:flex items-center space-x-2 bg-black/20 px-3 py-1 rounded-md border border-dorado-500/40 text-xs text-amber-100 font-medium">
+            <!-- Identificador de la plataforma -->
+            <div class="hidden lg:flex items-center space-x-2 bg-black/20 px-3 py-1.5 rounded-md border border-dorado-500/40 text-xs text-amber-100 font-medium">
                 <i class="fas fa-graduation-cap text-amber-300"></i>
                 <span>Plataforma Oficial de Microaprendizaje</span>
             </div>
@@ -236,6 +238,5 @@
     <script src="capsulasprogramacion.js"></script>
     <script src="capsulasmatematicas.js"></script>
     <script src="main.js"></script>
-
 </body>
 </html>
