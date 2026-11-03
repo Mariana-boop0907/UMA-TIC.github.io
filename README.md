@@ -21,7 +21,7 @@ El código se encuentra modularizado siguiendo buenas prácticas de desarrollo w
 ├── styles.css              # Estilos personalizados y diseño responsivo
 ├── main.js                 # Lógica general, navegación SPA y filtros
 ├── README.md               # Documentación oficial del repositorio
-└── capsulas/
+└── capsulas
     ├── sociales.js         # Contenido y ejercicios del área de Ciencias Sociales
     ├── programacion.js     # Contenido y ejercicios del área de Programación
     └── matematicas.js      # Contenido y ejercicios del área de Matemáticas
