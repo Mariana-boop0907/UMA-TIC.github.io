@@ -29,21 +29,31 @@
 </head>
 <body class="min-h-screen flex flex-col text-slate-800 antialiased">
 
-    <!-- 1. CINTILLA INSTITUCIONAL SUPERIOR (Fondo Vino Suave + Imagen Institucional) -->
-    <div class="border-b-2 border-dorado-500 py-2 px-4 sm:px-8 shadow-sm" style="background-color: #7A1C3A;">
-        <div class="max-w-7xl mx-auto flex items-center justify-center">
-            <img src="cintillainstitucional.png" alt="Gobierno de México, Ciencia y Tecnología, UNRC" class="h-12 sm:h-14 w-auto object-contain">
+    <!-- CINTILLA INSTITUCIONAL SUPERIOR CON IMAGEN Y ETIQUETA A LA DERECHA -->
+    <div class="border-b-2 border-dorado-500 py-2.5 px-4 sm:px-8 shadow-sm" style="background-color: #7A1C3A;">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+            
+            <!-- Imagen institucional centrada/izquierda (Asegúrate de que no tenga fondo oscuro o recuadro) -->
+            <div class="flex items-center justify-center md:justify-start w-full md:w-auto">
+                <img src="cintilla-institucional.png" alt="Gobierno de México, Ciencia y Tecnología, UNRC" class="h-10 sm:h-12 w-auto object-contain">
+            </div>
+
+            <!-- Insignia a la derecha -->
+            <div class="hidden lg:flex items-center space-x-2 bg-black/20 px-3.5 py-1.5 rounded-md border border-dorado-500/40 text-xs text-amber-100 font-medium shrink-0">
+                <i class="fas fa-graduation-cap text-amber-300"></i>
+                <span>Plataforma Oficial de Microaprendizaje</span>
+            </div>
         </div>
     </div>
 
-    <!-- 2. ENCABEZADO (HEADER) CON EL LOGOTIPO UMA-TIC -->
+    <!-- ENCABEZADO (HEADER) CON EL LOGOTIPO UMA-TIC -->
     <header class="bg-vino-900 text-white sticky top-0 z-50 shadow-lg border-b border-vino-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 
                 <!-- LOGOTIPO UMA-TIC -->
                 <div class="flex items-center space-x-3 cursor-pointer py-2" onclick="navegarA('inicio')">
-                    <img src="logoumatic.png" alt="UMA-TIC Unidades de Microaprendizaje en TIC" class="h-12 sm:h-14 w-auto object-contain bg-white/95 px-2 py-1 rounded-lg shadow">
+                    <img src="logo-umatic.png" alt="UMA-TIC Unidades de Microaprendizaje en TIC" class="h-12 sm:h-14 w-auto object-contain bg-white/95 px-2 py-1 rounded-lg shadow">
                 </div>
 
                 <!-- NAVEGACIÓN -->
