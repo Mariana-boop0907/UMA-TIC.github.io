@@ -95,25 +95,39 @@
     <!-- CONTENIDO PRINCIPAL -->
     <main class="flex-grow">
         
-        <!-- SECCIÓN 1: INICIO / HERO (ESTILO UAPA CON FONDO BLANCO) -->
+        <!-- SECCIÓN 1: INICIO / HERO -->
         <section id="sec-inicio" class="seccion-pagina">
             <div class="bg-white text-slate-900 py-16 px-4 sm:px-6 lg:px-8 shadow-inner border-b-4 border-dorado-500">
-                <div class="max-w-4xl mx-auto text-center space-y-6">
+                <div class="max-w-5xl mx-auto space-y-8">
                     
-                    <!-- TÍTULO PRINCIPAL CON ACENTOS DORADOS Y VINO -->
-                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight text-vino-900">
-                        Unidades de <span class="text-dorado-600">Microaprendizaje</span> para el <span class="text-dorado-600">Aprendizaje</span>
-                    </h1>
+                    <!-- TÍTULO PRINCIPAL -->
+                    <div class="text-center space-y-3">
+                        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight text-vino-900">
+                            Unidades de <span class="text-dorado-600">Microaprendizaje</span> para el <span class="text-dorado-600">Aprendizaje</span>
+                        </h1>
+                    </div>
 
-                    <!-- BIENVENIDA -->
-                    <div class="space-y-3 text-left bg-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
-                        <h2 class="text-2xl font-bold text-vino-900">Bienvenid@</h2>
-                        <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
-                            La Universidad Nacional Rosario Castellanos (UNRC), a través de los proyectos de Prácticas Profesionales de la Licenciatura en Tecnologías de la Información y la Comunicación (LTIC), brinda apoyo a la comunidad estudiantil mediante recursos de libre acceso.
-                        </p>
-                        <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
-                            En este sitio encontrarás recursos educativos denominados <strong>Unidades de Microaprendizaje en TIC (UMA-TIC)</strong>, que abordan temas derivados de planes y programas de estudio de la licenciatura; son recursos de autoestudio diseñados para reforzar conocimientos clave en Programación, Matemáticas y Ciencias Sociales, por lo que facilitan el aprendizaje autónomo y continuo.
-                        </p>
+                    <!-- BIENVENIDA CON DOS COLUMNAS (TEXTO E IMAGEN) -->
+                    <div class="bg-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        
+                        <!-- Columna de Texto -->
+                        <div class="space-y-3 text-left">
+                            <h2 class="text-2xl font-bold text-vino-900">Bienvenid@</h2>
+                            <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+                                La Universidad Nacional Rosario Castellanos (UNRC), a través de los proyectos de Prácticas Profesionales de la Licenciatura en Tecnologías de la Información y la Comunicación (LTIC), brinda apoyo a la comunidad estudiantil mediante recursos de libre acceso.
+                            </p>
+                            <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+                                En este sitio encontrarás recursos educativos denominados <strong>Unidades de Microaprendizaje en TIC (UMA-TIC)</strong>, que abordan temas derivados de planes y programas de estudio[cite: 24]; son recursos de autoestudio diseñados para reforzar conocimientos clave en Programación, Matemáticas y Ciencias Sociales[cite: 15], facilitando el aprendizaje autónomo y continuo.
+                            </p>
+                        </div>
+
+                        <!-- Columna de Imagen (Con cita APA 7 en atributo alt y comentario) -->
+                        <div class="flex flex-col items-center justify-center">
+                            <!-- Nota APA 7: La Cadera de Eva (2022). ¿Cuándo nació Rosario Castellanos? https://lacaderadeeva.com/entrevistas/cuando-nacio-rosario-castellanos/13898 -->
+                            <img src="rosariocastellanos.jpg" alt="Ilustración conmemorativa de Rosario Castellanos. Tomada por Sandra Rojas de La Cadera de Eva (2022) https://lacaderadeeva.com/entrevistas/cuando-nacio-rosario-castellanos/13898" class="max-h-72 w-auto object-cover rounded-xl shadow-md border-2 border-dorado-500 bg-white p-1.5">
+                            <span class="text-[10px] text-slate-500 mt-2 text-center">Imagen tomada por Sandra Rojas de: La Cadera de Eva (2022)</span>
+                        </div>
+
                     </div>
 
                     <!-- BUSCADOR CENTRAL -->
@@ -145,7 +159,7 @@
                             <i class="fas fa-code"></i>
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 group-hover:text-vino-800 transition">🖥️ Programación</h3>
-                        <p class="text-sm text-slate-500 mt-2">Fundamentos de lógica, estructuras de datos, paradigmas y desarrollo web[cite: 18].</p>
+                        <p class="text-sm text-slate-500 mt-2">Fundamentos de lógica, estructuras de datos, paradigmas y desarrollo web.</p>
                     </div>
 
                     <div onclick="filtrarPorArea('Matemáticas')" class="bg-white rounded-2xl shadow-xl p-6 border-t-4 border-vino-800 hover:-translate-y-1 transition duration-300 cursor-pointer group">
@@ -153,7 +167,7 @@
                             <i class="fas fa-calculator"></i>
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 group-hover:text-vino-800 transition">📐 Matemáticas</h3>
-                        <p class="text-sm text-slate-500 mt-2">Álgebra, cálculo, probabilidad y matemáticas discretas aplicadas a TIC[cite: 18].</p>
+                        <p class="text-sm text-slate-500 mt-2">Álgebra, cálculo, probabilidad y matemáticas discretas aplicadas a TIC.</p>
                     </div>
 
                     <div onclick="filtrarPorArea('Ciencias Sociales')" class="bg-white rounded-2xl shadow-xl p-6 border-t-4 border-vino-800 hover:-translate-y-1 transition duration-300 cursor-pointer group">
@@ -161,7 +175,7 @@
                             <i class="fas fa-globe"></i>
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 group-hover:text-vino-800 transition">🌍 Ciencias Sociales</h3>
-                        <p class="text-sm text-slate-500 mt-2">Normativa APA 7ma, redacción técnica y el impacto social de la tecnología[cite: 18].</p>
+                        <p class="text-sm text-slate-500 mt-2">Normativa APA 7ma, redacción técnica y el impacto social de la tecnología.</p>
                     </div>
                 </div>
             </div>
@@ -244,6 +258,11 @@
                         <li><strong>Análisis de necesidades:</strong> Identificar áreas de oportunidad en el aprendizaje de estudiantes de semestres iniciales.</li>
                         <li><strong>Recursos interactivos:</strong> Desarrollar cápsulas multimedia (videos, infografías y quizzes) y herramientas de gamificación.</li>
                     </ul>
+                </div>
+
+                <!-- REFERENCIA DE LA IMAGEN EN ACERCA -->
+                <div class="text-xs text-slate-500 pt-4 border-t border-slate-200">
+                    <p><strong>Créditos de imagen conmemorativa:</strong> La Cadera de Eva. (2022). <em>¿Cuándo nació Rosario Castellanos?</em> [Ilustración]. https://lacaderadeeva.com/entrevistas/cuando-nacio-rosario-castellanos/13898</p>
                 </div>
             </div>
         </section>
