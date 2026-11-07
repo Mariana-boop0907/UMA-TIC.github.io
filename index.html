@@ -29,8 +29,8 @@
 </head>
 <body class="min-h-screen flex flex-col text-slate-800 antialiased">
 
-    <!-- CINTILLA INSTITUCIONAL SUPERIOR CON FONDO BLANCO Y ETIQUETA A LA DERECHA -->
-    <div class="bg-white border-b-2 border-dorado-500 py-2.5 px-4 sm:px-8 shadow-sm">
+    <!-- CINTILLA INSTITUCIONAL SUPERIOR (RESTAURADA A SU ESTADO ORIGINAL) -->
+    <div class="border-b-2 border-dorado-500 py-2.5 px-4 sm:px-8 shadow-sm" style="background-color: #630037;">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
             
             <!-- Imagen institucional centrada/izquierda -->
@@ -38,9 +38,9 @@
                 <img src="cintillainstitucional.png" alt="Gobierno de México, Ciencia y Tecnología, UNRC" class="h-10 sm:h-12 w-auto object-contain">
             </div>
 
-            <!-- Insignia a la derecha con colores ajustados al fondo blanco -->
-            <div class="hidden lg:flex items-center space-x-2 bg-vino-50 px-3.5 py-1.5 rounded-md border border-dorado-500 text-xs text-vino-900 font-semibold shrink-0">
-                <i class="fas fa-graduation-cap text-vino-700"></i>
+            <!-- Insignia a la derecha -->
+            <div class="hidden lg:flex items-center space-x-2 bg-black/20 px-3.5 py-1.5 rounded-md border border-dorado-500/40 text-xs text-amber-100 font-medium shrink-0">
+                <i class="fas fa-graduation-cap text-amber-300"></i>
                 <span>Plataforma Oficial de Microaprendizaje</span>
             </div>
         </div>
@@ -95,35 +95,35 @@
     <!-- CONTENIDO PRINCIPAL -->
     <main class="flex-grow">
         
-        <!-- SECCIÓN 1: INICIO / HERO -->
+        <!-- SECCIÓN 1: INICIO / HERO (CON FONDO BLANCO Y LETRAS AJUSTADAS) -->
         <section id="sec-inicio" class="seccion-pagina">
-            <div class="text-white py-16 px-4 sm:px-6 lg:px-8 shadow-inner border-b-4 border-dorado-500" style="background: linear-gradient(135deg, #7A1C3A 0%, #630037 100%);">
+            <div class="bg-white text-slate-900 py-16 px-4 sm:px-6 lg:px-8 shadow-inner border-b-4 border-dorado-500">
                 <div class="max-w-4xl mx-auto text-center space-y-6">
-                    <span class="inline-block bg-vino-950/80 text-amber-200 text-xs font-semibold uppercase tracking-wider px-3.5 py-1 rounded-full border border-dorado-500/50">
+                    <span class="inline-block bg-vino-50 text-vino-800 text-xs font-semibold uppercase tracking-wider px-3.5 py-1 rounded-full border border-dorado-500">
                         Universidad Nacional Rosario Castellanos
                     </span>
-                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight text-vino-900">
                         Aprende a tu ritmo con cápsulas dinámicas de microaprendizaje
                     </h1>
-                    <p class="text-lg sm:text-xl text-vino-100 max-w-2xl mx-auto font-light leading-relaxed">
+                    <p class="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto font-light leading-relaxed">
                         Espacio educativo desarrollado por estudiantes de 7.º semestre de la Licenciatura en Tecnologías de la Información y la Comunicación para fortalecer tu desempeño académico.
                     </p>
 
                     <div class="pt-4 max-w-xl mx-auto">
                         <div class="relative flex items-center">
-                            <input type="text" id="busquedaCentral" onkeypress="buscarHero(event)" placeholder="¿Qué tema quieres repasar hoy? (Ej. APA 7, C++, Cálculo)..." class="w-full text-slate-800 pl-12 pr-28 py-4 rounded-xl shadow-lg focus:outline-none focus:ring-4 focus:ring-dorado-500 text-sm sm:text-base">
+                            <input type="text" id="busquedaCentral" onkeypress="buscarHero(event)" placeholder="¿Qué tema quieres repasar hoy? (Ej. APA 7, C++, Cálculo)..." class="w-full bg-slate-50 text-slate-800 pl-12 pr-28 py-4 rounded-xl shadow-lg border border-slate-300 focus:outline-none focus:ring-4 focus:ring-dorado-500 text-sm sm:text-base">
                             <i class="fas fa-search absolute left-4 text-slate-400 text-lg"></i>
                             <button onclick="ejecutarBusquedaCentral()" class="absolute right-2 bg-vino-800 hover:bg-vino-900 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition shadow border border-dorado-500/40">
                                 Buscar
                             </button>
                         </div>
-                        <div class="flex flex-wrap justify-center gap-2 mt-3 text-xs text-amber-100">
-                            <span>Sugerencias:</span>
-                            <button onclick="buscarEtiqueta('APA 7')" class="underline hover:text-amber-300">APA 7</button>
+                        <div class="flex flex-wrap justify-center gap-2 mt-3 text-xs text-slate-600">
+                            <span class="font-medium">Sugerencias:</span>
+                            <button onclick="buscarEtiqueta('APA 7')" class="text-vino-800 underline hover:text-vino-950 font-semibold">APA 7</button>
                             <span>•</span>
-                            <button onclick="buscarEtiqueta('Estructuras de Datos')" class="underline hover:text-amber-300">Estructuras de Datos</button>
+                            <button onclick="buscarEtiqueta('Estructuras de Datos')" class="text-vino-800 underline hover:text-vino-950 font-semibold">Estructuras de Datos</button>
                             <span>•</span>
-                            <button onclick="buscarEtiqueta('Cálculo')" class="underline hover:text-amber-300">Cálculo</button>
+                            <button onclick="buscarEtiqueta('Cálculo')" class="text-vino-800 underline hover:text-vino-950 font-semibold">Cálculo</button>
                         </div>
                     </div>
                 </div>
