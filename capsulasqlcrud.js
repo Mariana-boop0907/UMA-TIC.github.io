@@ -94,7 +94,7 @@ WHERE Matricula = '20260145';</code></pre>
                     <button type="button" onclick="responderAutoevaluacionSQL(1, false, 'UPDATE modifica registros existentes; no es el comando de consulta de lectura.')" class="w-full text-left px-3 py-2 rounded-lg border border-slate-200 hover:bg-purple-50 transition">
                         a. UPDATE
                     </button>
-                    <button type="button" onclick="responderAutoevaluacionSQL(1, true, '¡Correcto! SELECT extrae y muestra información sin alterar los datos almacenados.')" class="w-full text-left px-3 py-2 rounded-lg border border-slate-200 hover:bg-purple-50 transition">
+                    <button type="button" onclick="responderAutoevaluacionSQL(1, true, 'SELECT extrae y muestra información sin alterar los datos almacenados.')" class="w-full text-left px-3 py-2 rounded-lg border border-slate-200 hover:bg-purple-50 transition">
                         b. SELECT
                     </button>
                     <button type="button" onclick="responderAutoevaluacionSQL(1, false, 'INSERT INTO agrega nuevas filas a una tabla.')" class="w-full text-left px-3 py-2 rounded-lg border border-slate-200 hover:bg-purple-50 transition">
@@ -114,7 +114,7 @@ WHERE Matricula = '20260145';</code></pre>
                     <button type="button" onclick="responderAutoevaluacionSQL(2, false, 'Sin condición WHERE, la instrucción no se limita a un solo registro o al último agregado.')" class="w-full text-left px-3 py-2 rounded-lg border border-slate-200 hover:bg-purple-50 transition">
                         b. Se elimina únicamente el último registro que fue agregado a la tabla.
                     </button>
-                    <button type="button" onclick="responderAutoevaluacionSQL(2, true, '¡Correcto! Sin una cláusula WHERE que filtre filas, se eliminan todos los registros de la tabla Productos.')" class="w-full text-left px-3 py-2 rounded-lg border border-slate-200 hover:bg-purple-50 transition">
+                    <button type="button" onclick="responderAutoevaluacionSQL(2, true, 'Sin una cláusula WHERE que filtre filas, se eliminan todos los registros de la tabla Productos.')" class="w-full text-left px-3 py-2 rounded-lg border border-slate-200 hover:bg-purple-50 transition">
                         c. Se eliminan todos los registros almacenados dentro de la tabla Productos.
                     </button>
                 </div>
@@ -125,7 +125,7 @@ WHERE Matricula = '20260145';</code></pre>
             <div class="space-y-2 text-xs pt-2 border-t border-slate-100">
                 <p class="font-semibold text-slate-800">3. Si necesitas corregir el número telefónico de un cliente que ya está registrado en tu base de datos, ¿qué combinación de comandos debes utilizar?</p>
                 <div class="space-y-1.5">
-                    <button type="button" onclick="responderAutoevaluacionSQL(3, true, '¡Correcto! UPDATE con SET y WHERE actualiza el teléfono únicamente del cliente con ID_Cliente = 10.')" class="w-full text-left px-3 py-2 rounded-lg border border-slate-200 hover:bg-purple-50 transition">
+                    <button type="button" onclick="responderAutoevaluacionSQL(3, true, 'UPDATE con SET y WHERE actualiza el teléfono únicamente del cliente con ID_Cliente = 10.')" class="w-full text-left px-3 py-2 rounded-lg border border-slate-200 hover:bg-purple-50 transition">
                         a. UPDATE Clientes SET Telefono = '5512345678' WHERE ID_Cliente = 10;
                     </button>
                     <button type="button" onclick="responderAutoevaluacionSQL(3, false, 'INSERT INTO se usa para crear nuevos registros, no para modificar un dato existente con WHERE.')" class="w-full text-left px-3 py-2 rounded-lg border border-slate-200 hover:bg-purple-50 transition">
@@ -159,9 +159,9 @@ function responderAutoevaluacionSQL(numeroPregunta, esCorrecta, mensaje) {
 
     if (esCorrecta) {
         caja.classList.add('bg-emerald-50', 'border-emerald-300', 'text-emerald-900');
-        caja.innerHTML = `<strong><i class="fas fa-check-circle mr-1"></i></strong> ${mensaje}`;
+        caja.innerHTML = `<i class="fas fa-check-circle mr-1"></i> <span class="font-bold">¡Correcto!</span> ${mensaje}`;
     } else {
         caja.classList.add('bg-rose-50', 'border-rose-300', 'text-rose-900');
-        caja.innerHTML = `<strong><i class="fas fa-times-circle mr-1"></i></strong> ${mensaje}`;
+        caja.innerHTML = `<i class="fas fa-times-circle mr-1"></i> <span class="font-bold">Inténtalo de nuevo:</span> ${mensaje}`;
     }
 }
