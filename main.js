@@ -166,11 +166,6 @@ function verDetalleCapsula(id) {
             ${resumen ? `<p class="text-sm text-vino-100 mt-2 max-w-3xl leading-relaxed">${resumen}</p>` : ''}
             ${bannerHtml}
             <p class="text-xs text-vino-200 mt-3">Validado por la Academia UNRC | Nivel ${cap.nivel} • ${cap.duracion}</p>
-            <div class="mt-4">
-                <a href="#bloque-recurso-capsula" class="inline-flex items-center bg-dorado-500 hover:bg-dorado-600 text-slate-950 font-bold text-xs px-4 py-2 rounded-lg transition shadow">
-                    <i class="fas fa-book-open mr-2"></i>Ir al contenido
-                </a>
-            </div>
         </div>
         <div class="p-6 sm:p-8 space-y-8">
             <div class="space-y-2">
