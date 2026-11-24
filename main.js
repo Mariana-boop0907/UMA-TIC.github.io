@@ -1,24 +1,25 @@
 const listaCapsulas = [
-    capsulaSociales, 
-    capsulaProgramacion, 
-    capsulaMatematicas, 
-    capsulaRedes, 
-    capsulaDatos, 
-    capsulaGestion, 
-    capsulaInvestigacion
-];
+    typeof capsulaSociales !== 'undefined' ? capsulaSociales : null,
+    typeof capsulaProgramacion !== 'undefined' ? capsulaProgramacion : null,
+    typeof capsulaMatematicas !== 'undefined' ? capsulaMatematicas : null,
+    typeof capsulaRedes !== 'undefined' ? capsulaRedes : null,
+    typeof capsulaDatos !== 'undefined' ? capsulaDatos : null,
+    typeof capsulaSqlCrud !== 'undefined' ? capsulaSqlCrud : null,
+    typeof capsulaGestion !== 'undefined' ? capsulaGestion : null,
+    typeof capsulaInvestigacion !== 'undefined' ? capsulaInvestigacion : null
+].filter(Boolean);
 
 function navegarA(idSeccion) {
     document.querySelectorAll('.seccion-pagina').forEach(sec => sec.classList.add('hidden'));
-    
-    if(idSeccion === 'inicio') {
+
+    if (idSeccion === 'inicio') {
         document.getElementById('sec-inicio').classList.remove('hidden');
-    } else if(idSeccion === 'catalogo') {
+    } else if (idSeccion === 'catalogo') {
         document.getElementById('sec-catalogo').classList.remove('hidden');
         filtrarCapsulas();
-    } else if(idSeccion === 'capsula') {
+    } else if (idSeccion === 'capsula') {
         document.getElementById('sec-capsula').classList.remove('hidden');
-    } else if(idSeccion === 'acerca') {
+    } else if (idSeccion === 'acerca') {
         document.getElementById('sec-acerca').classList.remove('hidden');
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -35,15 +36,29 @@ function filtrarPorArea(area) {
     document.getElementById('filtroFormatoSelect').value = 'Todos';
     const inputCentral = document.getElementById('busquedaCentral');
     const inputHeader = document.getElementById('busquedaHeader');
-    if(inputCentral) inputCentral.value = '';
-    if(inputHeader) inputHeader.value = '';
+    if (inputCentral) inputCentral.value = '';
+    if (inputHeader) inputHeader.value = '';
+    filtrarCapsulas();
+}
+
+function limpiarFiltros() {
+    const selectArea = document.getElementById('filtroAreaSelect');
+    const selectFormato = document.getElementById('filtroFormatoSelect');
+    const inputCentral = document.getElementById('busquedaCentral');
+    const inputHeader = document.getElementById('busquedaHeader');
+
+    if (selectArea) selectArea.value = 'Todas';
+    if (selectFormato) selectFormato.value = 'Todos';
+    if (inputCentral) inputCentral.value = '';
+    if (inputHeader) inputHeader.value = '';
+
     filtrarCapsulas();
 }
 
 function filtrarCapsulas() {
     const area = document.getElementById('filtroAreaSelect').value;
     const formato = document.getElementById('filtroFormatoSelect').value;
-    
+
     const textoCentral = document.getElementById('busquedaCentral') ? document.getElementById('busquedaCentral').value.toLowerCase().trim() : '';
     const textoHeader = document.getElementById('busquedaHeader') ? document.getElementById('busquedaHeader').value.toLowerCase().trim() : '';
     const query = textoCentral || textoHeader;
@@ -53,17 +68,17 @@ function filtrarCapsulas() {
     const filtradas = listaCapsulas.filter(cap => {
         const cumpleArea = (area === 'Todas' || cap.area === area);
         const cumpleFormato = (formato === 'Todos' || cap.formato === formato);
-        
-        const coincideTexto = !query || 
-            cap.titulo.toLowerCase().includes(query) || 
-            cap.explicacion.toLowerCase().includes(query) || 
+
+        const coincideTexto = !query ||
+            cap.titulo.toLowerCase().includes(query) ||
+            cap.explicacion.toLowerCase().includes(query) ||
             (cap.tags && cap.tags.some(tag => tag.toLowerCase().includes(query)));
 
         return cumpleArea && cumpleFormato && coincideTexto;
     });
 
     grid.innerHTML = '';
-    if(filtradas.length === 0) {
+    if (filtradas.length === 0) {
         grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-500">
             <i class="fas fa-folder-open text-4xl mb-3 text-slate-300"></i>
             <p>No se encontraron cápsulas que coincidan con tu búsqueda.</p>
@@ -76,31 +91,31 @@ function filtrarCapsulas() {
         let colorBoton = 'bg-slate-800 hover:bg-slate-900 border-slate-700 text-white';
         let colorFormato = 'text-slate-800';
 
-        if(cap.area.includes('Programación')) {
+        if (cap.area.includes('Programación')) {
             colorHeader = 'bg-blue-900 border-blue-500/40 text-amber-200';
             colorBoton = 'bg-blue-600 hover:bg-blue-700 border-blue-400 text-white';
             colorFormato = 'text-blue-700';
-        } else if(cap.area.includes('Matemáticas')) {
+        } else if (cap.area.includes('Matemáticas')) {
             colorHeader = 'bg-amber-900 border-amber-500/40 text-amber-200';
             colorBoton = 'bg-amber-600 hover:bg-amber-700 border-amber-400 text-white';
             colorFormato = 'text-amber-700';
-        } else if(cap.area.includes('Infraestructura')) {
+        } else if (cap.area.includes('Infraestructura')) {
             colorHeader = 'bg-indigo-900 border-indigo-500/40 text-amber-200';
             colorBoton = 'bg-indigo-600 hover:bg-indigo-700 border-indigo-400 text-white';
             colorFormato = 'text-indigo-700';
-        } else if(cap.area.includes('Datos')) {
+        } else if (cap.area.includes('Datos')) {
             colorHeader = 'bg-purple-900 border-purple-500/40 text-amber-200';
             colorBoton = 'bg-purple-600 hover:bg-purple-700 border-purple-400 text-white';
             colorFormato = 'text-purple-700';
-        } else if(cap.area.includes('Gestión')) {
+        } else if (cap.area.includes('Gestión')) {
             colorHeader = 'bg-slate-800 border-slate-500/40 text-amber-200';
             colorBoton = 'bg-slate-700 hover:bg-slate-800 border-slate-600 text-white';
             colorFormato = 'text-slate-700';
-        } else if(cap.area.includes('Humanidades')) {
+        } else if (cap.area.includes('Humanidades')) {
             colorHeader = 'bg-emerald-900 border-emerald-500/40 text-amber-200';
             colorBoton = 'bg-emerald-600 hover:bg-emerald-700 border-emerald-400 text-white';
             colorFormato = 'text-emerald-700';
-        } else if(cap.area.includes('Investigación')) {
+        } else if (cap.area.includes('Investigación')) {
             colorHeader = 'bg-rose-900 border-rose-500/40 text-amber-200';
             colorBoton = 'bg-rose-600 hover:bg-rose-700 border-rose-400 text-white';
             colorFormato = 'text-rose-700';
@@ -134,14 +149,28 @@ function filtrarCapsulas() {
 
 function verDetalleCapsula(id) {
     const cap = listaCapsulas.find(item => item.id === id);
-    if(!cap) return;
+    if (!cap) return;
+
+    const resumen = cap.resumenCorto || '';
+    const bannerHtml = cap.imagenBanner
+        ? `<div class="mt-4">
+            <img src="${cap.imagenBanner}" alt="${cap.altBanner || cap.titulo}" class="w-48 sm:w-56 h-auto rounded-xl bg-white p-2.5 shadow-md border border-white/20">
+        </div>`
+        : '';
 
     const contenedor = document.getElementById('detalleCapsulaContenido');
     contenedor.innerHTML = `
         <div class="text-white p-6 border-b-4 border-dorado-500" style="background-color: #630037;">
             <span class="text-xs font-bold text-amber-300 uppercase tracking-wider">${cap.area}</span>
             <h2 class="text-2xl font-bold mt-1">${cap.titulo}</h2>
-            <p class="text-xs text-vino-200 mt-2">Validado por la Academia UNRC | Nivel ${cap.nivel} • ${cap.duracion}</p>
+            ${resumen ? `<p class="text-sm text-vino-100 mt-2 max-w-3xl leading-relaxed">${resumen}</p>` : ''}
+            ${bannerHtml}
+            <p class="text-xs text-vino-200 mt-3">Validado por la Academia UNRC | Nivel ${cap.nivel} • ${cap.duracion}</p>
+            <div class="mt-4">
+                <a href="#bloque-recurso-capsula" class="inline-flex items-center bg-dorado-500 hover:bg-dorado-600 text-slate-950 font-bold text-xs px-4 py-2 rounded-lg transition shadow">
+                    <i class="fas fa-book-open mr-2"></i>Ir al contenido
+                </a>
+            </div>
         </div>
         <div class="p-6 sm:p-8 space-y-8">
             <div class="space-y-2">
@@ -149,15 +178,15 @@ function verDetalleCapsula(id) {
                     <span class="bg-vino-800 text-white rounded-full w-6 h-6 inline-flex items-center justify-center text-xs mr-2">1</span>
                     Explicación Breve
                 </h3>
-                <p class="text-sm text-slate-700 leading-relaxed pl-8">${cap.explicacion}</p>
+                <p class="text-sm text-slate-700 leading-relaxed pl-0 sm:pl-8">${cap.explicacion}</p>
             </div>
 
-            <div class="space-y-2">
+            <div id="bloque-recurso-capsula" class="space-y-2">
                 <h3 class="text-base font-bold text-vino-900 flex items-center mb-3">
                     <span class="bg-vino-800 text-white rounded-full w-6 h-6 inline-flex items-center justify-center text-xs mr-2">2</span>
                     Recurso Multimedia / Interactivo
                 </h3>
-                <div class="pl-8">${cap.recursoHtml}</div>
+                <div class="pl-0 sm:pl-8">${cap.recursoHtml}</div>
             </div>
 
             <div class="space-y-3">
@@ -165,15 +194,16 @@ function verDetalleCapsula(id) {
                     <span class="bg-vino-800 text-white rounded-full w-6 h-6 inline-flex items-center justify-center text-xs mr-2">3</span>
                     Ejercicio Práctico
                 </h3>
-                <div class="pl-8 bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
+                <div class="pl-0 sm:pl-8 bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
                     <p class="text-xs font-bold text-slate-800">${cap.ejercicioPregunta}</p>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                         ${cap.opciones.map((opt, idx) => `
-                            <button onclick="evaluarRespuesta(${idx === cap.respuestaCorrecta})" class="text-left p-2.5 rounded-lg border border-slate-300 bg-white hover:bg-slate-100 transition text-slate-700">
+                            <button type="button" onclick="evaluarRespuesta(${idx === cap.respuestaCorrecta})" class="text-left p-2.5 rounded-lg border border-slate-300 bg-white hover:bg-slate-100 transition text-slate-700">
                                 ${opt}
                             </button>
                         `).join('')}
                     </div>
+                    <div id="retroalimentacion-ejercicio" class="hidden p-3 rounded-lg text-xs border"></div>
                 </div>
             </div>
         </div>
@@ -182,7 +212,20 @@ function verDetalleCapsula(id) {
 }
 
 function evaluarRespuesta(esCorrecta) {
-    if(esCorrecta) {
+    const caja = document.getElementById('retroalimentacion-ejercicio');
+    if (caja) {
+        caja.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-300', 'text-emerald-900', 'bg-rose-50', 'border-rose-300', 'text-rose-900');
+        if (esCorrecta) {
+            caja.classList.add('bg-emerald-50', 'border-emerald-300', 'text-emerald-900');
+            caja.innerHTML = '<strong><i class="fas fa-check-circle mr-1"></i> ¡Respuesta Correcta!</strong> Has completado el ejercicio con éxito.';
+        } else {
+            caja.classList.add('bg-rose-50', 'border-rose-300', 'text-rose-900');
+            caja.innerHTML = '<strong><i class="fas fa-times-circle mr-1"></i> Respuesta incorrecta.</strong> Revisa el contenido explicativo e inténtalo de nuevo.';
+        }
+        return;
+    }
+
+    if (esCorrecta) {
         alert("¡Respuesta Correcta! Has completado el ejercicio con éxito.");
     } else {
         alert("Respuesta incorrecta. Revisa el contenido explicativo e inténtalo de nuevo.");
@@ -192,33 +235,33 @@ function evaluarRespuesta(esCorrecta) {
 function ejecutarBusquedaCentral() {
     const selectArea = document.getElementById('filtroAreaSelect');
     const selectFormato = document.getElementById('filtroFormatoSelect');
-    if(selectArea) selectArea.value = 'Todas';
-    if(selectFormato) selectFormato.value = 'Todos';
+    if (selectArea) selectArea.value = 'Todas';
+    if (selectFormato) selectFormato.value = 'Todos';
 
     navegarA('catalogo');
 }
 
 function buscarHero(e) {
-    if(e.key === 'Enter') {
+    if (e.key === 'Enter') {
         ejecutarBusquedaCentral();
     }
 }
 
 function buscarHeader(e) {
-    if(e.key === 'Enter') {
+    if (e.key === 'Enter') {
         const val = document.getElementById('busquedaHeader').value;
         const central = document.getElementById('busquedaCentral');
-        if(central) central.value = val;
+        if (central) central.value = val;
         ejecutarBusquedaCentral();
     }
 }
 
 function buscarEtiqueta(tag) {
     const central = document.getElementById('busquedaCentral');
-    if(central) central.value = tag;
+    if (central) central.value = tag;
     ejecutarBusquedaCentral();
 }
 
-window.onload = function() {
+window.onload = function () {
     filtrarCapsulas();
 };
