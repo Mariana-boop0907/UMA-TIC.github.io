@@ -137,7 +137,7 @@ function filtrarCapsulas() {
                             <span>Nivel: <strong class="text-slate-700">${cap.nivel}</strong></span>
                             <span>Formato: <strong class="${colorFormato}">${cap.formato}</strong></span>
                         </div>
-                        <button onclick="verDetalleCapsula(${cap.id})" class="w-full ${colorBoton} font-medium text-xs py-2.5 rounded-lg transition text-center shadow border">
+                        <button type="button" onclick="verDetalleCapsula(${cap.id})" class="w-full ${colorBoton} font-medium text-xs py-2.5 rounded-lg transition text-center shadow border">
                             Ver Cápsula / Iniciar
                         </button>
                     </div>
@@ -198,7 +198,7 @@ function verDetalleCapsula(id) {
                     <p class="text-xs font-bold text-slate-800">${cap.ejercicioPregunta}</p>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                         ${cap.opciones.map((opt, idx) => `
-                            <button type="button" onclick="evaluarRespuesta(${idx === cap.respuestaCorrecta})" class="text-left p-2.5 rounded-lg border border-slate-300 bg-white hover:bg-slate-100 transition text-slate-700">
+                            <button type="button" onclick="evaluarRespuesta(${idx === cap.respuestaCorrecta}, ${cap.id})" class="text-left p-2.5 rounded-lg border border-slate-300 bg-white hover:bg-slate-100 transition text-slate-700">
                                 ${opt}
                             </button>
                         `).join('')}
@@ -211,16 +211,23 @@ function verDetalleCapsula(id) {
     navegarA('capsula');
 }
 
-function evaluarRespuesta(esCorrecta) {
+function evaluarRespuesta(esCorrecta, idCapsula) {
+    const cap = listaCapsulas.find(item => item.id === idCapsula);
     const caja = document.getElementById('retroalimentacion-ejercicio');
     if (caja) {
         caja.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-300', 'text-emerald-900', 'bg-rose-50', 'border-rose-300', 'text-rose-900');
         if (esCorrecta) {
+            const msg = (cap && cap.retroalimentacionCorrecta)
+                ? cap.retroalimentacionCorrecta
+                : 'Has completado el ejercicio con éxito.';
             caja.classList.add('bg-emerald-50', 'border-emerald-300', 'text-emerald-900');
-            caja.innerHTML = '<strong><i class="fas fa-check-circle mr-1"></i> ¡Respuesta Correcta!</strong> Has completado el ejercicio con éxito.';
+            caja.innerHTML = `<i class="fas fa-check-circle mr-1"></i> <span class="font-bold">¡Respuesta Correcta!</span> ${msg}`;
         } else {
+            const msg = (cap && cap.retroalimentacionIncorrecta)
+                ? cap.retroalimentacionIncorrecta
+                : 'Revisa el contenido explicativo e inténtalo de nuevo.';
             caja.classList.add('bg-rose-50', 'border-rose-300', 'text-rose-900');
-            caja.innerHTML = '<strong><i class="fas fa-times-circle mr-1"></i> Respuesta incorrecta.</strong> Revisa el contenido explicativo e inténtalo de nuevo.';
+            caja.innerHTML = `<i class="fas fa-times-circle mr-1"></i> <span class="font-bold">Respuesta incorrecta.</span> ${msg}`;
         }
         return;
     }
